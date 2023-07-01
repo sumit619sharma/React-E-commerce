@@ -10,7 +10,11 @@ const NavBar = (props) => {
     <Navbar  fixed='top'   bg="light" className="bg-body-tertiary">
     <Container >
       <Navbar.Brand href="#home">E-commerce</Navbar.Brand>
-      <NavLink to="/" 
+      <NavLink to="/Home" 
+        style={{ padding: "10px" }}
+       > Home</NavLink>
+      
+      <NavLink to="/product" 
         style={{ padding: "10px" }}
         activeClassName="active-link">Product</NavLink>
       <NavLink to="/about" 
