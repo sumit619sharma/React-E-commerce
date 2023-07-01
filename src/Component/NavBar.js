@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { Button, Container, Navbar } from 'react-bootstrap'
 import CartContext from '../store/cart-context'
+import {NavLink} from 'react-router-dom'
 
 const NavBar = (props) => {
     const cartCtx = useContext(CartContext);
@@ -9,6 +10,12 @@ const NavBar = (props) => {
     <Navbar  fixed='top'   bg="light" className="bg-body-tertiary">
     <Container >
       <Navbar.Brand href="#home">E-commerce</Navbar.Brand>
+      <NavLink to="/" 
+        style={{ padding: "10px" }}
+        activeClassName="active-link">Product</NavLink>
+      <NavLink to="/about" 
+        style={{ padding: "10px" }}
+        activeStyle={{ color: "red", fontWeight: "bold" }}>About</NavLink>
       <Navbar.Toggle />
       <Navbar.Collapse className="justify-content-end">
         <Navbar.Text>

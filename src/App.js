@@ -4,6 +4,8 @@ import Product from './Component/Product'
 import NavBar from './Component/NavBar'
 import Cart from './Component/Cart'
 import AppProvider from './store/CartProvider'
+import {BrowserRouter,Route,Routes} from 'react-router-dom'
+import About from './Component/About'
 
 const App = () => {
 const [showCart,setShowCart] = useState(false);
@@ -15,9 +17,18 @@ const [showCart,setShowCart] = useState(false);
   return (
     <AppProvider>
     <Container style={{ position: "relative" }} >
+    
+    
+    <BrowserRouter>
     <NavBar onClick={toggleCart} />
     {showCart && <Cart onClick={toggleCart}  /> }
-      <Product/>
+<Routes>
+  <Route  path='/' element={<Product/>}    />
+ <Route  path='/about' element= { <About/> } />
+</Routes>
+
+    </BrowserRouter>
+      
     </Container>
     </AppProvider>
   )
