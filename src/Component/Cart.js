@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Button, Modal, Table } from 'react-bootstrap'
+import CartContext from '../store/cart-context'
 const cartElements = [
 
     {
@@ -42,6 +43,8 @@ const cartElements = [
     
     
 const Cart = (props) => {
+    const cartCtx = useContext(CartContext);
+    const cartArr =  Object.keys( cartCtx.item);
   return (
     <div
     className="modal show"
@@ -68,14 +71,15 @@ const Cart = (props) => {
         </tr>
       </thead>
       <tbody>
-      { cartElements.map((item)=> {
+      { cartArr.map((key)=> {
+        const item = cartCtx.item[key]
         return (
-            <tr>
+            <tr key={key}>
           
           <td> <img src={item.imageUrl} width={100} /> {item.title}  </td>
           <td>{item.price}</td>
           
-          <td>{item.quantity} <Button variant='danger' >Remove</Button> </td>
+          <td>{cartCtx.quantity[key]} <Button variant='danger' >Remove</Button> </td>
         </tr>
         )
       }) }
@@ -88,8 +92,12 @@ const Cart = (props) => {
       </Modal.Body>
 
       <Modal.Footer>
-        <Button variant="secondary" onClick={props.onClick} >Close</Button>
+      <div className="container" style={{display:'flex',justifyContent: 'space-between'}}>
+        <span>Total Amount</span>
+        <span>  ${cartCtx.totalAmount}</span>
       
+        <Button variant="secondary" onClick={props.onClick} >Close</Button>
+        </div>
       </Modal.Footer>
     </Modal.Dialog>
   </div>
