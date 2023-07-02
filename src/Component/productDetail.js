@@ -1,7 +1,7 @@
-import React, { useContext } from 'react'
-import { Col, Container, Row ,Card, Button} from 'react-bootstrap'
-import CartContext from '../store/cart-context'
-import { Link } from 'react-router-dom'
+import React from 'react'
+import { Button, Card, Container } from 'react-bootstrap'
+import { useParams } from 'react-router-dom'
+
 const productsArr = [
 
     {
@@ -45,45 +45,30 @@ const productsArr = [
     }
     
     ]
-    
-    
-const Product = () => {
-  const crtCtx = useContext(CartContext);
-    const addToCart = (item) => {
-   
-    crtCtx.addItem(item);
-    }
 
+const ProductDetail = () => {
+    const params = useParams()
+    console.log(params);
+    const item = productsArr[params.productid-1];
+    console.log("details==",item);
   return (
-    <Container>
-        <Row>
-        {
-            productsArr.map((item)=>{
-                return (
-                    <Col xs={6} className='my-10 mx-10'   >
-                    <Card style={{ width: '18rem' , margin: "7px" }}>
-        <Card.Img variant="top" src={item.imageUrl} /> 
+    <Container style={{marginTop: '10%'}} >
+    <div style={{color: 'red'}}>
+    <Card>
+    <Card.Img variant="top" src={item.imageUrl} width={100} height={200} /> 
       <Card.Body>
         <Card.Title>{item.title}</Card.Title>
         <Card.Text className='text-danger ' style={{display:'flex' , justifyContent: 'space-between'}} >
-        {item.price}  <Link to={'/product/'+ item.id} >
-        <Button variant='primary' onClick={()=>{
-          
-        }} >Details</Button>
-        </Link>    <Button variant='primary' onClick={()=>{addToCart(item)}} >Add to Cart</Button>
+        {item.price}    
         </Card.Text>
         
         
       </Card.Body>
     </Card>
-
-                    </Col>
-                )
-            })
-        }
-        </Row>
+    </div>
+   
     </Container>
   )
 }
 
-export default Product
+export default ProductDetail

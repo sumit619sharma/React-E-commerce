@@ -25,7 +25,7 @@ console.log("resp==",data);
 }
 
   return (
-    <Container style={{ marginTop: '16%', marginBottom: '10%' }} >
+    <Container style={{ marginTop: '10%', marginBottom: '10%' }} >
   
       <Card>
         <Card.Body>
