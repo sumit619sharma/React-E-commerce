@@ -11,15 +11,15 @@ const NavBar = (props) => {
     <Container >
       <Navbar.Brand href="#home">E-commerce</Navbar.Brand>
       <NavLink to="/Home" 
-        style={{ padding: "10px" }}
+        style={{ padding: "10px",textDecoration: 'none' }}
        > Home</NavLink>
       
       <NavLink to="/product" 
-        style={{ padding: "10px" }}
+        style={{ padding: "10px",textDecoration: 'none' }}
         activeClassName="active-link">Product</NavLink>
-      <NavLink to="/about" 
-        style={{ padding: "10px" }}
-        activeStyle={{ color: "red", fontWeight: "bold" }}>About</NavLink>
+      <NavLink to="/about" style={{ padding: "10px",textDecoration: 'none' }}>About</NavLink>
+
+<NavLink to="/contact" style={{ padding: "10px" ,textDecoration: 'none' }} > ContactUs</NavLink>
       <Navbar.Toggle />
       <Navbar.Collapse className="justify-content-end">
         <Navbar.Text>

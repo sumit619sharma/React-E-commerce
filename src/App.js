@@ -7,6 +7,7 @@ import AppProvider from './store/CartProvider'
 import {BrowserRouter,Route,Routes} from 'react-router-dom'
 import About from './Component/About'
 import Home from './Component/Home'
+import ContactUs from './Component/contactUs'
 
 const App = () => {
 const [showCart,setShowCart] = useState(false);
@@ -27,6 +28,7 @@ const [showCart,setShowCart] = useState(false);
   <Route  path='/product' element={<Product/>}    />
  <Route  path='/about' element= { <About/> } />
  <Route  path='/home' element={<Home/>}    />
+ <Route  path='/contact' element={<ContactUs/>}    />
 </Routes>
 
     </BrowserRouter>
