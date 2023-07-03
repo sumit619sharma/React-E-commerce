@@ -30,17 +30,16 @@ const addUserToFirebase = async (userDetail) =>{
         if(!resp.ok){
          // setError(true);
           const err=await resp.json();
-          console.log("resp but err",err);
+         
           
           return err;
         }
 //setError(false);
     const res = await resp.json();
-    console.log("resp success",res);
+   
     return res;  
   } catch (err) {
-    console.log("clear error",err);
-   // setError(true);
+  
     return err
   }
   
@@ -55,13 +54,13 @@ const addUserToFirebase = async (userDetail) =>{
       returnSecureToken: true,
     }
     const resp = await addUserToFirebase(detail);
-   console.log("inside check",resp)
+  // console.log("inside check",resp)
     if(!resp.idToken){
       setError(resp);
       return;
     }
-      authCtx.onLogin(resp.idToken);
-    navigation('/product', { replace: true });
+   authCtx.onLogIn(resp.idToken);
+    navigation('/product');
     
   };
 

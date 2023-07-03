@@ -1,7 +1,8 @@
-import React, { useContext } from 'react'
-import { Col, Container, Row ,Card, Button} from 'react-bootstrap'
+import React, { useContext, useEffect } from 'react'
+import { Col, Container, Row ,Card, Button, } from 'react-bootstrap'
 import CartContext from '../store/cart-context'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import AuthContext from '../store/auth-context'
 const productsArr = [
 
     {
@@ -49,11 +50,28 @@ const productsArr = [
     
 const Product = () => {
   const crtCtx = useContext(CartContext);
+  const authCtx = useContext(AuthContext);
+  const navigate = useNavigate();
     const addToCart = (item) => {
-   
-    crtCtx.addItem(item);
+     crtCtx.addItem(item);
     }
 
+    // doesn't work properly
+useEffect(()=>{
+  
+    if(!authCtx.isloggedIn){
+      console.log("yes inside to navigate");
+      navigate('/login');
+      
+    }
+  
+  
+})
+console.log(authCtx);
+console.log(authCtx.isloggedIn);
+console.log("auth state==",typeof(authCtx.isloggedIn))
+    
+  
   return (
     <Container>
         <Row>

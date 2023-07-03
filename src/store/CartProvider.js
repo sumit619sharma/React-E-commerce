@@ -191,10 +191,11 @@ const plusOneFromMedicineHandler = (id)  => {
   }
   const authContext = {
     token: token,
-    isloggedIn: false,
+    isloggedIn: token!=null? true:false,
     onLogIn: addToken,
     onLogOut: ()=>{},  
   }
+  
 
   return <CartContext.Provider value={cartContext} >
   <AuthContext.Provider value={authContext} >
