@@ -10,6 +10,7 @@ import About from './Component/About'
 import Home from './Component/Home'
 import ContactUs from './Component/contactUs'
 import ProductDetail from './Component/productDetail'
+import Login from './Component/Login'
 
 const App = () => {
 const [showCart,setShowCart] = useState(false);
@@ -26,11 +27,14 @@ const [showCart,setShowCart] = useState(false);
     {showCart && <Cart onClick={toggleCart}  /> }   
 
 <Routes>
+ 
  <Route  exact path='/product' element={<Product/>}    />
  <Route  path='/about' element= { <About/> } />
  <Route  path='/home' element={<Home/>}    />
  <Route  path='/contact' element={<ContactUs/>}    />
  <Route  exact path='/product/:productid' element={<ProductDetail/>}    />
+ <Route  path='/login' element={<Login/>}    />
+ <Route path='*' element={<Home/>} />
 </Routes>
 
 

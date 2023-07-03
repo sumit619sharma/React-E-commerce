@@ -1,6 +1,7 @@
-import React,{useReducer} from 'react'
+import React,{useReducer, useState} from 'react'
 import CartContext from './cart-context'
 import MedicineContext from './medicine-context';
+import AuthContext from './auth-context';
 const defaultCartState ={
     item: {},
     quantity: {},
@@ -136,7 +137,7 @@ const mediReducer = (state,action) =>{
 const AppProvider = (props) => {
   const [mediState, dispatchMedi]= useReducer(mediReducer,defaultMediState);
   const [cartState, dispatchCart]= useReducer(cartReducer,defaultCartState);
-  
+  const [token,setToken] = useState(null);
 
   const addItemToCartHandler = ( item) => {
    
@@ -184,9 +185,21 @@ const plusOneFromMedicineHandler = (id)  => {
     plusOne: plusOneFromMedicineHandler,
     minusOne: minusOneFromMedicineHandler,
   }
+  const addToken = (token)=>{
+    setToken(token);
+    localStorage.setItem('token', token);
+  }
+  const authContext = {
+    token: token,
+    isloggedIn: false,
+    onLogIn: addToken,
+    onLogOut: ()=>{},  
+  }
 
   return <CartContext.Provider value={cartContext} >
+  <AuthContext.Provider value={authContext} >
    {props.children}
+   </AuthContext.Provider>
   </CartContext.Provider>
    
   

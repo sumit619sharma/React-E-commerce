@@ -20,6 +20,7 @@ const NavBar = (props) => {
       <NavLink to="/about" style={{ padding: "10px",textDecoration: 'none' }}>About</NavLink>
 
 <NavLink to="/contact" style={{ padding: "10px" ,textDecoration: 'none' }} > ContactUs</NavLink>
+<NavLink to="/login" style={{ padding: "10px" ,textDecoration: 'none' }} > LogIn</NavLink>
       <Navbar.Toggle />
       <Navbar.Collapse className="justify-content-end">
         <Navbar.Text>
